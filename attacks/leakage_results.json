@@ -1,0 +1,146 @@
+[
+  {
+    "id": "A1",
+    "name": "unscoped SELECT, no tenant context",
+    "surface": "sql",
+    "config": "vaultsearch",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "visible rows by tenant: []"
+  },
+  {
+    "id": "A2",
+    "name": "context=A + crafted tenant predicates",
+    "surface": "sql",
+    "config": "vaultsearch",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "foreign rows returned across 3 probes: 0"
+  },
+  {
+    "id": "A3-ann",
+    "name": "NN probe seeded with B's text (ann)",
+    "surface": "sql",
+    "config": "vaultsearch",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "top-10 neighbours: 0 foreign ([])"
+  },
+  {
+    "id": "A3-exact",
+    "name": "NN probe seeded with B's text (exact)",
+    "surface": "sql",
+    "config": "vaultsearch",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "top-10 neighbours: 0 foreign ([])"
+  },
+  {
+    "id": "A4",
+    "name": "error oracle: does B's doc exist?",
+    "surface": "sql",
+    "config": "vaultsearch",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "division-error for B doc: True, for nonexistent id: True (identical behaviour = no oracle)"
+  },
+  {
+    "id": "A5",
+    "name": "privilege escalation / policy removal (5 attempts)",
+    "surface": "sql",
+    "config": "vaultsearch",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "succeeded: none"
+  },
+  {
+    "id": "A6",
+    "name": "cross-tenant writes (insert / update)",
+    "surface": "sql",
+    "config": "vaultsearch",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "succeeded: none"
+  },
+  {
+    "id": "A7",
+    "name": "timing: B-doc lookup vs nonexistent lookup",
+    "surface": "sql",
+    "config": "vaultsearch",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "median B=0.036ms nonexistent=0.036ms ratio=1.00 (300 reps)"
+  },
+  {
+    "id": "A1",
+    "name": "unscoped SELECT, no tenant context",
+    "surface": "sql",
+    "config": "vaultsearch_naive",
+    "expected": "blocked",
+    "leaked": true,
+    "evidence": "visible rows by tenant: [('acme-cooking', 301), ('benco-auto', 301), ('ledgerly-finance', 301), ('verdant-garden', 301)]"
+  },
+  {
+    "id": "A2",
+    "name": "context=A + crafted tenant predicates",
+    "surface": "sql",
+    "config": "vaultsearch_naive",
+    "expected": "blocked",
+    "leaked": true,
+    "evidence": "foreign rows returned across 3 probes: 602"
+  },
+  {
+    "id": "A3-ann",
+    "name": "NN probe seeded with B's text (ann)",
+    "surface": "sql",
+    "config": "vaultsearch_naive",
+    "expected": "blocked",
+    "leaked": true,
+    "evidence": "top-10 neighbours: 10 foreign (['benc-0009', 'benc-0036', 'benc-0051'])"
+  },
+  {
+    "id": "A3-exact",
+    "name": "NN probe seeded with B's text (exact)",
+    "surface": "sql",
+    "config": "vaultsearch_naive",
+    "expected": "blocked",
+    "leaked": true,
+    "evidence": "top-10 neighbours: 10 foreign (['benc-0009', 'benc-0036', 'benc-0051'])"
+  },
+  {
+    "id": "A4",
+    "name": "error oracle: does B's doc exist?",
+    "surface": "sql",
+    "config": "vaultsearch_naive",
+    "expected": "blocked",
+    "leaked": true,
+    "evidence": "division-error for B doc: False, for nonexistent id: True (behaviour differs = existence oracle)"
+  },
+  {
+    "id": "A5",
+    "name": "privilege escalation / policy removal (5 attempts)",
+    "surface": "sql",
+    "config": "vaultsearch_naive",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "succeeded: none"
+  },
+  {
+    "id": "A6",
+    "name": "cross-tenant writes (insert / update)",
+    "surface": "sql",
+    "config": "vaultsearch_naive",
+    "expected": "blocked",
+    "leaked": true,
+    "evidence": "succeeded: ['insert-into-B', 'update-B-rowcount-1']"
+  },
+  {
+    "id": "A7",
+    "name": "timing: B-doc lookup vs nonexistent lookup",
+    "surface": "sql",
+    "config": "vaultsearch_naive",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "median B=0.081ms nonexistent=0.071ms ratio=1.14 (300 reps)"
+  }
+]

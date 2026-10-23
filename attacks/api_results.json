@@ -1,0 +1,162 @@
+[
+  {
+    "id": "P1",
+    "name": "search B's domain terms (3 modes)",
+    "surface": "api",
+    "config": "rls",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "no foreign docs in any mode",
+    "http_status": null
+  },
+  {
+    "id": "P2",
+    "name": "GET /documents/{B doc id}",
+    "surface": "api",
+    "config": "rls",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "status 404",
+    "http_status": 404
+  },
+  {
+    "id": "P3",
+    "name": "GET /similar/{B doc id}",
+    "surface": "api",
+    "config": "rls",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "status 404",
+    "http_status": 404
+  },
+  {
+    "id": "P4",
+    "name": "GET /similar/{A doc id} neighbour scope",
+    "surface": "api",
+    "config": "rls",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "status 200, all neighbours own-tenant",
+    "http_status": 200
+  },
+  {
+    "id": "P5",
+    "name": "tenant_id body field + X-Tenant-Id header injection",
+    "surface": "api",
+    "config": "rls",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "injection ignored",
+    "http_status": null
+  },
+  {
+    "id": "P6",
+    "name": "malformed inputs / error probing (5 cases)",
+    "surface": "api",
+    "config": "rls",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "all rejected or safely empty, no DB error text",
+    "http_status": null
+  },
+  {
+    "id": "P7",
+    "name": "canary hunt across 12 searches",
+    "surface": "api",
+    "config": "rls",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "canary never surfaced",
+    "http_status": null
+  },
+  {
+    "id": "P8",
+    "name": "missing / wrong API key",
+    "surface": "api",
+    "config": "rls",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "statuses: no-key=401, wrong-key=401",
+    "http_status": null
+  },
+  {
+    "id": "P1",
+    "name": "search B's domain terms (3 modes)",
+    "surface": "api",
+    "config": "naive",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "no foreign docs in any mode",
+    "http_status": null
+  },
+  {
+    "id": "P2",
+    "name": "GET /documents/{B doc id}",
+    "surface": "api",
+    "config": "naive",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "status 404",
+    "http_status": 404
+  },
+  {
+    "id": "P3",
+    "name": "GET /similar/{B doc id}",
+    "surface": "api",
+    "config": "naive",
+    "expected": "blocked",
+    "leaked": true,
+    "evidence": "foreign doc ids: ['benc-0036', 'benc-0051', 'benc-0023']",
+    "http_status": 200
+  },
+  {
+    "id": "P4",
+    "name": "GET /similar/{A doc id} neighbour scope",
+    "surface": "api",
+    "config": "naive",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "status 200, all neighbours own-tenant",
+    "http_status": 200
+  },
+  {
+    "id": "P5",
+    "name": "tenant_id body field + X-Tenant-Id header injection",
+    "surface": "api",
+    "config": "naive",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "injection ignored",
+    "http_status": null
+  },
+  {
+    "id": "P6",
+    "name": "malformed inputs / error probing (5 cases)",
+    "surface": "api",
+    "config": "naive",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "all rejected or safely empty, no DB error text",
+    "http_status": null
+  },
+  {
+    "id": "P7",
+    "name": "canary hunt across 12 searches",
+    "surface": "api",
+    "config": "naive",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "canary never surfaced",
+    "http_status": null
+  },
+  {
+    "id": "P8",
+    "name": "missing / wrong API key",
+    "surface": "api",
+    "config": "naive",
+    "expected": "blocked",
+    "leaked": false,
+    "evidence": "statuses: no-key=401, wrong-key=401",
+    "http_status": null
+  }
+]

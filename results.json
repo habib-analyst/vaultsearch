@@ -1,0 +1,396 @@
+{
+  "environment": {
+    "postgres": "PostgreSQL 16.4 (built from source, --without-readline --without-zlib)",
+    "pgvector": "0.8.0 (built from source against the local install)",
+    "server": "127.0.0.1:7432, runs as uid 1000 inside a user namespace (the VM shell is root; Postgres refuses root)",
+    "embedding_model": "all-MiniLM-L6-v2 (384-dim, local, sentence-transformers)",
+    "service": "Go 1.23, pgx/v5, stdlib HTTP; lexical arm = ts_rank over OR-combined stemmed tsquery; vector arm = pgvector cosine; fusion = RRF k=60",
+    "corpus": "1200 synthetic documents (4 tenants x 4 topics x 75) + 4 canary documents = 1204 per database"
+  },
+  "leakage_sql_surface": {
+    "summary_by_config": {
+      "vaultsearch": {
+        "attempts": 8,
+        "leaks": 0
+      },
+      "vaultsearch_naive": {
+        "attempts": 8,
+        "leaks": 6
+      }
+    },
+    "attempt_log": [
+      {
+        "id": "A1",
+        "name": "unscoped SELECT, no tenant context",
+        "surface": "sql",
+        "config": "vaultsearch",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "visible rows by tenant: []"
+      },
+      {
+        "id": "A2",
+        "name": "context=A + crafted tenant predicates",
+        "surface": "sql",
+        "config": "vaultsearch",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "foreign rows returned across 3 probes: 0"
+      },
+      {
+        "id": "A3-ann",
+        "name": "NN probe seeded with B's text (ann)",
+        "surface": "sql",
+        "config": "vaultsearch",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "top-10 neighbours: 0 foreign ([])"
+      },
+      {
+        "id": "A3-exact",
+        "name": "NN probe seeded with B's text (exact)",
+        "surface": "sql",
+        "config": "vaultsearch",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "top-10 neighbours: 0 foreign ([])"
+      },
+      {
+        "id": "A4",
+        "name": "error oracle: does B's doc exist?",
+        "surface": "sql",
+        "config": "vaultsearch",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "division-error for B doc: True, for nonexistent id: True (identical behaviour = no oracle)"
+      },
+      {
+        "id": "A5",
+        "name": "privilege escalation / policy removal (5 attempts)",
+        "surface": "sql",
+        "config": "vaultsearch",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "succeeded: none"
+      },
+      {
+        "id": "A6",
+        "name": "cross-tenant writes (insert / update)",
+        "surface": "sql",
+        "config": "vaultsearch",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "succeeded: none"
+      },
+      {
+        "id": "A7",
+        "name": "timing: B-doc lookup vs nonexistent lookup",
+        "surface": "sql",
+        "config": "vaultsearch",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "median B=0.073ms nonexistent=0.051ms ratio=1.43 (300 reps)"
+      },
+      {
+        "id": "A1",
+        "name": "unscoped SELECT, no tenant context",
+        "surface": "sql",
+        "config": "vaultsearch_naive",
+        "expected": "blocked",
+        "leaked": true,
+        "evidence": "visible rows by tenant: [('acme-cooking', 301), ('benco-auto', 301), ('ledgerly-finance', 301), ('verdant-garden', 301)]"
+      },
+      {
+        "id": "A2",
+        "name": "context=A + crafted tenant predicates",
+        "surface": "sql",
+        "config": "vaultsearch_naive",
+        "expected": "blocked",
+        "leaked": true,
+        "evidence": "foreign rows returned across 3 probes: 602"
+      },
+      {
+        "id": "A3-ann",
+        "name": "NN probe seeded with B's text (ann)",
+        "surface": "sql",
+        "config": "vaultsearch_naive",
+        "expected": "blocked",
+        "leaked": true,
+        "evidence": "top-10 neighbours: 10 foreign (['benc-0009', 'benc-0036', 'benc-0051'])"
+      },
+      {
+        "id": "A3-exact",
+        "name": "NN probe seeded with B's text (exact)",
+        "surface": "sql",
+        "config": "vaultsearch_naive",
+        "expected": "blocked",
+        "leaked": true,
+        "evidence": "top-10 neighbours: 10 foreign (['benc-0009', 'benc-0036', 'benc-0051'])"
+      },
+      {
+        "id": "A4",
+        "name": "error oracle: does B's doc exist?",
+        "surface": "sql",
+        "config": "vaultsearch_naive",
+        "expected": "blocked",
+        "leaked": true,
+        "evidence": "division-error for B doc: False, for nonexistent id: True (behaviour differs = existence oracle)"
+      },
+      {
+        "id": "A5",
+        "name": "privilege escalation / policy removal (5 attempts)",
+        "surface": "sql",
+        "config": "vaultsearch_naive",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "succeeded: none"
+      },
+      {
+        "id": "A6",
+        "name": "cross-tenant writes (insert / update)",
+        "surface": "sql",
+        "config": "vaultsearch_naive",
+        "expected": "blocked",
+        "leaked": true,
+        "evidence": "succeeded: ['insert-into-B', 'update-B-rowcount-1']"
+      },
+      {
+        "id": "A7",
+        "name": "timing: B-doc lookup vs nonexistent lookup",
+        "surface": "sql",
+        "config": "vaultsearch_naive",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "median B=0.081ms nonexistent=0.070ms ratio=1.16 (300 reps)"
+      }
+    ]
+  },
+  "leakage_api_surface": {
+    "summary_by_config": {
+      "rls": {
+        "attempts": 8,
+        "leaks": 0
+      },
+      "naive": {
+        "attempts": 8,
+        "leaks": 1
+      }
+    },
+    "attempt_log": [
+      {
+        "id": "P1",
+        "name": "search B's domain terms (3 modes)",
+        "surface": "api",
+        "config": "rls",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "no foreign docs in any mode",
+        "http_status": null
+      },
+      {
+        "id": "P2",
+        "name": "GET /documents/{B doc id}",
+        "surface": "api",
+        "config": "rls",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "status 404",
+        "http_status": 404
+      },
+      {
+        "id": "P3",
+        "name": "GET /similar/{B doc id}",
+        "surface": "api",
+        "config": "rls",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "status 404",
+        "http_status": 404
+      },
+      {
+        "id": "P4",
+        "name": "GET /similar/{A doc id} neighbour scope",
+        "surface": "api",
+        "config": "rls",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "status 200, all neighbours own-tenant",
+        "http_status": 200
+      },
+      {
+        "id": "P5",
+        "name": "tenant_id body field + X-Tenant-Id header injection",
+        "surface": "api",
+        "config": "rls",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "injection ignored",
+        "http_status": null
+      },
+      {
+        "id": "P6",
+        "name": "malformed inputs / error probing (5 cases)",
+        "surface": "api",
+        "config": "rls",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "all rejected or safely empty, no DB error text",
+        "http_status": null
+      },
+      {
+        "id": "P7",
+        "name": "canary hunt across 12 searches",
+        "surface": "api",
+        "config": "rls",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "canary never surfaced",
+        "http_status": null
+      },
+      {
+        "id": "P8",
+        "name": "missing / wrong API key",
+        "surface": "api",
+        "config": "rls",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "statuses: no-key=401, wrong-key=401",
+        "http_status": null
+      },
+      {
+        "id": "P1",
+        "name": "search B's domain terms (3 modes)",
+        "surface": "api",
+        "config": "naive",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "no foreign docs in any mode",
+        "http_status": null
+      },
+      {
+        "id": "P2",
+        "name": "GET /documents/{B doc id}",
+        "surface": "api",
+        "config": "naive",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "status 404",
+        "http_status": 404
+      },
+      {
+        "id": "P3",
+        "name": "GET /similar/{B doc id}",
+        "surface": "api",
+        "config": "naive",
+        "expected": "blocked",
+        "leaked": true,
+        "evidence": "foreign doc ids: ['benc-0036', 'benc-0051', 'benc-0023']",
+        "http_status": 200
+      },
+      {
+        "id": "P4",
+        "name": "GET /similar/{A doc id} neighbour scope",
+        "surface": "api",
+        "config": "naive",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "status 200, all neighbours own-tenant",
+        "http_status": 200
+      },
+      {
+        "id": "P5",
+        "name": "tenant_id body field + X-Tenant-Id header injection",
+        "surface": "api",
+        "config": "naive",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "injection ignored",
+        "http_status": null
+      },
+      {
+        "id": "P6",
+        "name": "malformed inputs / error probing (5 cases)",
+        "surface": "api",
+        "config": "naive",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "all rejected or safely empty, no DB error text",
+        "http_status": null
+      },
+      {
+        "id": "P7",
+        "name": "canary hunt across 12 searches",
+        "surface": "api",
+        "config": "naive",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "canary never surfaced",
+        "http_status": null
+      },
+      {
+        "id": "P8",
+        "name": "missing / wrong API key",
+        "surface": "api",
+        "config": "naive",
+        "expected": "blocked",
+        "leaked": false,
+        "evidence": "statuses: no-key=401, wrong-key=401",
+        "http_status": null
+      }
+    ]
+  },
+  "ndcg_at_10": {
+    "queries": 96,
+    "cross_tenant_hits_in_eval": 0,
+    "global": {
+      "lexical": 0.9972,
+      "vector": 0.9925,
+      "fused": 0.9996
+    },
+    "per_tenant": {
+      "acme-cooking": {
+        "lexical": 1.0,
+        "vector": 0.9845,
+        "fused": 1.0
+      },
+      "benco-auto": {
+        "lexical": 0.9932,
+        "vector": 1.0,
+        "fused": 1.0
+      },
+      "ledgerly-finance": {
+        "lexical": 1.0,
+        "vector": 0.9856,
+        "fused": 0.9982
+      },
+      "verdant-garden": {
+        "lexical": 0.9958,
+        "vector": 1.0,
+        "fused": 1.0
+      }
+    },
+    "per_style": {
+      "keyword": {
+        "lexical": 1.0,
+        "vector": 0.985,
+        "fused": 0.9991
+      },
+      "paraphrase": {
+        "lexical": 0.9945,
+        "vector": 1.0,
+        "fused": 1.0
+      }
+    },
+    "worst_tenant": {
+      "lexical": "benco-auto",
+      "vector": "acme-cooking",
+      "fused": "ledgerly-finance"
+    }
+  },
+  "headline": {
+    "rls_config_leaks": 0,
+    "rls_config_attempts": 16,
+    "naive_config_leaks": 7,
+    "naive_config_attempts": 16
+  }
+}

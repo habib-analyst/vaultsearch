@@ -1,0 +1,96 @@
+{"tenant_id": "acme-cooking", "topic": "sourdough fermentation", "cluster": "breads", "style": "keyword", "query": "sourdough and fermentation guide"}
+{"tenant_id": "acme-cooking", "topic": "sourdough fermentation", "cluster": "breads", "style": "keyword", "query": "how to handle starter"}
+{"tenant_id": "acme-cooking", "topic": "sourdough fermentation", "cluster": "breads", "style": "keyword", "query": "levain gluten problems"}
+{"tenant_id": "acme-cooking", "topic": "sourdough fermentation", "cluster": "breads", "style": "paraphrase", "query": "what should I do when things go wrong with my sourdough fermentation"}
+{"tenant_id": "acme-cooking", "topic": "sourdough fermentation", "cluster": "breads", "style": "paraphrase", "query": "advice for getting better results with sourdough fermentation"}
+{"tenant_id": "acme-cooking", "topic": "sourdough fermentation", "cluster": "breads", "style": "paraphrase", "query": "common mistakes people make with sourdough fermentation"}
+{"tenant_id": "acme-cooking", "topic": "baking science", "cluster": "breads", "style": "keyword", "query": "maillard and crust guide"}
+{"tenant_id": "acme-cooking", "topic": "baking science", "cluster": "breads", "style": "keyword", "query": "how to handle oven spring"}
+{"tenant_id": "acme-cooking", "topic": "baking science", "cluster": "breads", "style": "keyword", "query": "steam injection gelatinization problems"}
+{"tenant_id": "acme-cooking", "topic": "baking science", "cluster": "breads", "style": "paraphrase", "query": "what should I do when things go wrong with my baking science"}
+{"tenant_id": "acme-cooking", "topic": "baking science", "cluster": "breads", "style": "paraphrase", "query": "advice for getting better results with baking science"}
+{"tenant_id": "acme-cooking", "topic": "baking science", "cluster": "breads", "style": "paraphrase", "query": "common mistakes people make with baking science"}
+{"tenant_id": "acme-cooking", "topic": "spice blending", "cluster": "seasoning", "style": "keyword", "query": "spice blend and coriander guide"}
+{"tenant_id": "acme-cooking", "topic": "spice blending", "cluster": "seasoning", "style": "keyword", "query": "how to handle toasting"}
+{"tenant_id": "acme-cooking", "topic": "spice blending", "cluster": "seasoning", "style": "keyword", "query": "cumin turmeric problems"}
+{"tenant_id": "acme-cooking", "topic": "spice blending", "cluster": "seasoning", "style": "paraphrase", "query": "what should I do when things go wrong with my spice blending"}
+{"tenant_id": "acme-cooking", "topic": "spice blending", "cluster": "seasoning", "style": "paraphrase", "query": "advice for getting better results with spice blending"}
+{"tenant_id": "acme-cooking", "topic": "spice blending", "cluster": "seasoning", "style": "paraphrase", "query": "common mistakes people make with spice blending"}
+{"tenant_id": "acme-cooking", "topic": "pickling and preserves", "cluster": "seasoning", "style": "keyword", "query": "brine and fermented vegetables guide"}
+{"tenant_id": "acme-cooking", "topic": "pickling and preserves", "cluster": "seasoning", "style": "keyword", "query": "how to handle pickling"}
+{"tenant_id": "acme-cooking", "topic": "pickling and preserves", "cluster": "seasoning", "style": "keyword", "query": "vinegar pH problems"}
+{"tenant_id": "acme-cooking", "topic": "pickling and preserves", "cluster": "seasoning", "style": "paraphrase", "query": "what should I do when things go wrong with my pickling and preserves"}
+{"tenant_id": "acme-cooking", "topic": "pickling and preserves", "cluster": "seasoning", "style": "paraphrase", "query": "advice for getting better results with pickling and preserves"}
+{"tenant_id": "acme-cooking", "topic": "pickling and preserves", "cluster": "seasoning", "style": "paraphrase", "query": "common mistakes people make with pickling and preserves"}
+{"tenant_id": "benco-auto", "topic": "brake systems", "cluster": "chassis", "style": "keyword", "query": "brake pads and brake fluid guide"}
+{"tenant_id": "benco-auto", "topic": "brake systems", "cluster": "chassis", "style": "keyword", "query": "how to handle rotor"}
+{"tenant_id": "benco-auto", "topic": "brake systems", "cluster": "chassis", "style": "keyword", "query": "caliper ABS problems"}
+{"tenant_id": "benco-auto", "topic": "brake systems", "cluster": "chassis", "style": "paraphrase", "query": "what should I do when things go wrong with my brake systems"}
+{"tenant_id": "benco-auto", "topic": "brake systems", "cluster": "chassis", "style": "paraphrase", "query": "advice for getting better results with brake systems"}
+{"tenant_id": "benco-auto", "topic": "brake systems", "cluster": "chassis", "style": "paraphrase", "query": "common mistakes people make with brake systems"}
+{"tenant_id": "benco-auto", "topic": "suspension and steering", "cluster": "chassis", "style": "keyword", "query": "strut and wheel alignment guide"}
+{"tenant_id": "benco-auto", "topic": "suspension and steering", "cluster": "chassis", "style": "keyword", "query": "how to handle control arm"}
+{"tenant_id": "benco-auto", "topic": "suspension and steering", "cluster": "chassis", "style": "keyword", "query": "tie rod ball joint problems"}
+{"tenant_id": "benco-auto", "topic": "suspension and steering", "cluster": "chassis", "style": "paraphrase", "query": "what should I do when things go wrong with my suspension and steering"}
+{"tenant_id": "benco-auto", "topic": "suspension and steering", "cluster": "chassis", "style": "paraphrase", "query": "advice for getting better results with suspension and steering"}
+{"tenant_id": "benco-auto", "topic": "suspension and steering", "cluster": "chassis", "style": "paraphrase", "query": "common mistakes people make with suspension and steering"}
+{"tenant_id": "benco-auto", "topic": "engine diagnostics", "cluster": "powertrain", "style": "keyword", "query": "OBD-II and compression test guide"}
+{"tenant_id": "benco-auto", "topic": "engine diagnostics", "cluster": "powertrain", "style": "keyword", "query": "how to handle fault code"}
+{"tenant_id": "benco-auto", "topic": "engine diagnostics", "cluster": "powertrain", "style": "keyword", "query": "misfire fuel trim problems"}
+{"tenant_id": "benco-auto", "topic": "engine diagnostics", "cluster": "powertrain", "style": "paraphrase", "query": "what should I do when things go wrong with my engine diagnostics"}
+{"tenant_id": "benco-auto", "topic": "engine diagnostics", "cluster": "powertrain", "style": "paraphrase", "query": "advice for getting better results with engine diagnostics"}
+{"tenant_id": "benco-auto", "topic": "engine diagnostics", "cluster": "powertrain", "style": "paraphrase", "query": "common mistakes people make with engine diagnostics"}
+{"tenant_id": "benco-auto", "topic": "transmission service", "cluster": "powertrain", "style": "keyword", "query": "gearbox and ATF guide"}
+{"tenant_id": "benco-auto", "topic": "transmission service", "cluster": "powertrain", "style": "keyword", "query": "how to handle clutch"}
+{"tenant_id": "benco-auto", "topic": "transmission service", "cluster": "powertrain", "style": "keyword", "query": "torque converter synchromesh problems"}
+{"tenant_id": "benco-auto", "topic": "transmission service", "cluster": "powertrain", "style": "paraphrase", "query": "what should I do when things go wrong with my transmission service"}
+{"tenant_id": "benco-auto", "topic": "transmission service", "cluster": "powertrain", "style": "paraphrase", "query": "advice for getting better results with transmission service"}
+{"tenant_id": "benco-auto", "topic": "transmission service", "cluster": "powertrain", "style": "paraphrase", "query": "common mistakes people make with transmission service"}
+{"tenant_id": "verdant-garden", "topic": "soil health", "cluster": "growing", "style": "keyword", "query": "soil pH and nitrogen guide"}
+{"tenant_id": "verdant-garden", "topic": "soil health", "cluster": "growing", "style": "keyword", "query": "how to handle compost"}
+{"tenant_id": "verdant-garden", "topic": "soil health", "cluster": "growing", "style": "keyword", "query": "organic matter soil test problems"}
+{"tenant_id": "verdant-garden", "topic": "soil health", "cluster": "growing", "style": "paraphrase", "query": "what should I do when things go wrong with my soil health"}
+{"tenant_id": "verdant-garden", "topic": "soil health", "cluster": "growing", "style": "paraphrase", "query": "advice for getting better results with soil health"}
+{"tenant_id": "verdant-garden", "topic": "soil health", "cluster": "growing", "style": "paraphrase", "query": "common mistakes people make with soil health"}
+{"tenant_id": "verdant-garden", "topic": "irrigation and water", "cluster": "growing", "style": "keyword", "query": "drip irrigation and soaker hose guide"}
+{"tenant_id": "verdant-garden", "topic": "irrigation and water", "cluster": "growing", "style": "keyword", "query": "how to handle watering schedule"}
+{"tenant_id": "verdant-garden", "topic": "irrigation and water", "cluster": "growing", "style": "keyword", "query": "drought rainwater harvesting problems"}
+{"tenant_id": "verdant-garden", "topic": "irrigation and water", "cluster": "growing", "style": "paraphrase", "query": "what should I do when things go wrong with my irrigation and water"}
+{"tenant_id": "verdant-garden", "topic": "irrigation and water", "cluster": "growing", "style": "paraphrase", "query": "advice for getting better results with irrigation and water"}
+{"tenant_id": "verdant-garden", "topic": "irrigation and water", "cluster": "growing", "style": "paraphrase", "query": "common mistakes people make with irrigation and water"}
+{"tenant_id": "verdant-garden", "topic": "pest management", "cluster": "protection", "style": "keyword", "query": "aphids and neem guide"}
+{"tenant_id": "verdant-garden", "topic": "pest management", "cluster": "protection", "style": "keyword", "query": "how to handle slug control"}
+{"tenant_id": "verdant-garden", "topic": "pest management", "cluster": "protection", "style": "keyword", "query": "companion planting biological control problems"}
+{"tenant_id": "verdant-garden", "topic": "pest management", "cluster": "protection", "style": "paraphrase", "query": "what should I do when things go wrong with my pest management"}
+{"tenant_id": "verdant-garden", "topic": "pest management", "cluster": "protection", "style": "paraphrase", "query": "advice for getting better results with pest management"}
+{"tenant_id": "verdant-garden", "topic": "pest management", "cluster": "protection", "style": "paraphrase", "query": "common mistakes people make with pest management"}
+{"tenant_id": "verdant-garden", "topic": "pruning and training", "cluster": "protection", "style": "keyword", "query": "pruning and secateurs guide"}
+{"tenant_id": "verdant-garden", "topic": "pruning and training", "cluster": "protection", "style": "keyword", "query": "how to handle deadheading"}
+{"tenant_id": "verdant-garden", "topic": "pruning and training", "cluster": "protection", "style": "keyword", "query": "espalier thinning fruit problems"}
+{"tenant_id": "verdant-garden", "topic": "pruning and training", "cluster": "protection", "style": "paraphrase", "query": "what should I do when things go wrong with my pruning and training"}
+{"tenant_id": "verdant-garden", "topic": "pruning and training", "cluster": "protection", "style": "paraphrase", "query": "advice for getting better results with pruning and training"}
+{"tenant_id": "verdant-garden", "topic": "pruning and training", "cluster": "protection", "style": "paraphrase", "query": "common mistakes people make with pruning and training"}
+{"tenant_id": "ledgerly-finance", "topic": "budgeting basics", "cluster": "planning", "style": "keyword", "query": "budget and cash flow guide"}
+{"tenant_id": "ledgerly-finance", "topic": "budgeting basics", "cluster": "planning", "style": "keyword", "query": "how to handle emergency fund"}
+{"tenant_id": "ledgerly-finance", "topic": "budgeting basics", "cluster": "planning", "style": "keyword", "query": "sinking fund direct debit problems"}
+{"tenant_id": "ledgerly-finance", "topic": "budgeting basics", "cluster": "planning", "style": "paraphrase", "query": "what should I do when things go wrong with my budgeting basics"}
+{"tenant_id": "ledgerly-finance", "topic": "budgeting basics", "cluster": "planning", "style": "paraphrase", "query": "advice for getting better results with budgeting basics"}
+{"tenant_id": "ledgerly-finance", "topic": "budgeting basics", "cluster": "planning", "style": "paraphrase", "query": "common mistakes people make with budgeting basics"}
+{"tenant_id": "ledgerly-finance", "topic": "retirement planning", "cluster": "planning", "style": "keyword", "query": "pension and annuity guide"}
+{"tenant_id": "ledgerly-finance", "topic": "retirement planning", "cluster": "planning", "style": "keyword", "query": "how to handle compound growth"}
+{"tenant_id": "ledgerly-finance", "topic": "retirement planning", "cluster": "planning", "style": "keyword", "query": "retirement age employer match problems"}
+{"tenant_id": "ledgerly-finance", "topic": "retirement planning", "cluster": "planning", "style": "paraphrase", "query": "what should I do when things go wrong with my retirement planning"}
+{"tenant_id": "ledgerly-finance", "topic": "retirement planning", "cluster": "planning", "style": "paraphrase", "query": "advice for getting better results with retirement planning"}
+{"tenant_id": "ledgerly-finance", "topic": "retirement planning", "cluster": "planning", "style": "paraphrase", "query": "common mistakes people make with retirement planning"}
+{"tenant_id": "ledgerly-finance", "topic": "credit and debt", "cluster": "risk", "style": "keyword", "query": "credit score and debt avalanche guide"}
+{"tenant_id": "ledgerly-finance", "topic": "credit and debt", "cluster": "risk", "style": "keyword", "query": "how to handle APR"}
+{"tenant_id": "ledgerly-finance", "topic": "credit and debt", "cluster": "risk", "style": "keyword", "query": "minimum payment credit utilisation problems"}
+{"tenant_id": "ledgerly-finance", "topic": "credit and debt", "cluster": "risk", "style": "paraphrase", "query": "what should I do when things go wrong with my credit and debt"}
+{"tenant_id": "ledgerly-finance", "topic": "credit and debt", "cluster": "risk", "style": "paraphrase", "query": "advice for getting better results with credit and debt"}
+{"tenant_id": "ledgerly-finance", "topic": "credit and debt", "cluster": "risk", "style": "paraphrase", "query": "common mistakes people make with credit and debt"}
+{"tenant_id": "ledgerly-finance", "topic": "insurance essentials", "cluster": "risk", "style": "keyword", "query": "insurance premium and term life cover guide"}
+{"tenant_id": "ledgerly-finance", "topic": "insurance essentials", "cluster": "risk", "style": "keyword", "query": "how to handle excess"}
+{"tenant_id": "ledgerly-finance", "topic": "insurance essentials", "cluster": "risk", "style": "keyword", "query": "underwriting policy exclusion problems"}
+{"tenant_id": "ledgerly-finance", "topic": "insurance essentials", "cluster": "risk", "style": "paraphrase", "query": "what should I do when things go wrong with my insurance essentials"}
+{"tenant_id": "ledgerly-finance", "topic": "insurance essentials", "cluster": "risk", "style": "paraphrase", "query": "advice for getting better results with insurance essentials"}
+{"tenant_id": "ledgerly-finance", "topic": "insurance essentials", "cluster": "risk", "style": "paraphrase", "query": "common mistakes people make with insurance essentials"}

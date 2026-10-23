@@ -1,0 +1,18 @@
+{
+  "vaultsearch": {
+    "per_tenant_inserted": {
+      "acme-cooking": 301,
+      "benco-auto": 301,
+      "ledgerly-finance": 301,
+      "verdant-garden": 301
+    }
+  },
+  "vaultsearch_naive": {
+    "per_tenant_inserted": {
+      "acme-cooking": 301,
+      "benco-auto": 301,
+      "ledgerly-finance": 301,
+      "verdant-garden": 301
+    }
+  }
+}
